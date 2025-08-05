@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор строки заголовков</title>
+    <link rel="icon" href="{% static 'img/barcode.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/select_header.css' %}">
+</head>
+<body class="step-select-header">
+    <!-- Шапка с информацией о файле и режиме -->
+    <div class="info-header">
+        <div>
+            <strong class="strong">Файл:</strong> 
+            {% if file_name %}
+                <span class="file-info">{{ file_name }}</span>
+            {% else %}
+                <span class="file-info error">Файл не найден!</span>
+            {% endif %}
+        </div>
+        <div>
+            <strong class="strong">Режим:</strong> 
+            <span class="file-info">
+                {% if is_template_mode %}Создание шаблонов{% else %}Массовая печать{% endif %}
+            </span>
+        </div>
+    </div>
+    
+    <!-- Основной контейнер -->
+    <div class="container header-select-container heghter">
+        <a href="{% url 'upload_file' %}" class="btn">← К выбору файла!</a>
+        <h1>Шаг 2: Укажите номер строки с заголовками</h1>
+        
+        <!-- Форма выбора строки -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_header_row" class="input-label">Номер строки (начиная с 1):</label>
+                <input type="number" name="header_row" value="5" min="1" 
+                       class="header-row-input" id="id_header_row" required>
+            </div>
+            <button type="submit" class="btn">Продолжить</button>
+        </form>
+    </div>
+</body>
+</html>

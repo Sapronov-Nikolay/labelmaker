@@ -1,0 +1,126 @@
+/* ===================== */
+/* РЕДАКТИРОВАНИЕ ДАННЫХ (edit.css) */
+/* ===================== */
+
+/* Основной контейнер страницы */
+.data-edit-container {
+  overflow: hidden;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.foto-code {
+  position: relative;
+  width: 590px;
+  height: 200px;
+  top: 0px;
+  right: -30%;
+  background: url('../img/shtrih-kod-5.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: 2;
+}
+
+/* Контейнер таблицы с прокруткой */
+.table-container {
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+/* Общие стили таблицы */
+.data-table {
+  width: 100%;
+  table-layout: fixed; /* Фиксированная ширина колонок */
+  border-collapse: collapse;
+}
+
+/* Стили заголовков таблицы */
+.data-table th {
+  background: #3498db;
+  color: white;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  font-weight: 500;
+}
+
+/* Общие стили ячеек таблицы */
+.data-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+  vertical-align: middle;
+}
+
+/* Чередование цвета строк */
+.data-table tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+/* ===================== */
+/* СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ ЯЧЕЕК С ФОРМАМИ */
+/* ===================== */
+
+/* Стили для полей ввода в таблице */
+.data-table .table-input {
+  /*width: 100%;*/
+  padding: 6px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Поле "Цвет" */
+.table-input-1 {
+  width: 175px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* Поле "Размер" */
+.table-input-2 {
+  width: 100px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* Поле "Количество" */
+.table-input-3 {
+  width: 95px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 22px;
+
+  font-weight: 900;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .data-table td.item-forms:nth-of-type(1) .table-input-1 {
+      width: 90px;
+  }
+  .data-table td.item-forms:nth-of-type(2) .table-input-2 {
+      width: 70px;
+  }
+  .data-table td.item-forms:nth-of-type(3) .table-input-3 {
+      width: 50px;
+  }
+}
+
+/* ===================== */
+/* ДОПОЛНИТЕЛЬНЫЕ ЭЛЕМЕНТЫ */
+/* ===================== */
+
+/* Стиль для кнопки генерации */
+.table-submit-btn {
+  margin-top: 25px;
+  padding: 12px 30px;
+  font-size: 1.1em;
+}

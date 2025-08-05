@@ -1,0 +1,157 @@
+/* ===================== */
+/* БАЗОВЫЕ СТИЛИ (base.css) */
+/* ===================== */
+
+/* Сброс стилей и типографика */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 20px 0;
+  background-color: #f5f7fa;
+}
+
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
+/* Общие стили контейнеров */
+.container {
+  margin: 0 auto;
+  padding: 30px;
+  background: #ffffffd1;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0 0 0 /27%);
+}
+
+/* Шапка с информацией о файле */
+.info-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 10px 20px;
+  margin: 0 auto 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+  max-width: 80%;
+}
+
+.file-info {
+  background-color: #ae1fdf91;
+  color:#ffff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.file-info.error {
+  color: #dc3545;
+  background-color: #f8d7da;
+}
+
+/* Стиль для выделенного текста */
+.strong {
+  font-size: 22px;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+  background: #3498db;
+}
+
+.btn-primary:hover {
+  background: #1a252f;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 1.5em;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+/* Формы - базовые стили */
+input, select, textarea {
+  width: 90%;
+  padding: 10px;
+  border: 2px solid #3498db;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+input:focus, select:focus, textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Фоновые стили для разных шагов */
+body.step-select-header {
+  background: url('../img/barcode-on-white.jpg') no-repeat center center fixed;
+  background-size:cover;
+}
+
+body.step-select-columns {
+  background: url('../img/no-description.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.step-label-settings {
+  background: url('../img/shtrih-kod-2.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+/* правило, чтобы предотвратить возможные конфликты */
+table input,
+table select,
+table textarea {
+  box-sizing: border-box;
+  max-width: 100%;
+}

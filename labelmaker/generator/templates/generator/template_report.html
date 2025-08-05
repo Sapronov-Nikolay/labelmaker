@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Отчёт генерации шаблонов</title>
+    <link rel="icon" href="{% static 'img/barcode.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        /* Стили только для этой страницы */
+        .report-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .report-stats {
+            margin: 30px 0;
+            font-size: 1.2em;
+        }
+        .report-stats strong {
+            color: #3498db;
+            font-size: 1.3em;
+        }
+        .file-path {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 20px 0;
+            word-break: break-all;
+        }
+        .folder-link {
+        color: #3498db;
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 1px dashed #3498db;
+        transition: all 0.2s;
+        }
+        .folder-link:hover {
+            color: #2980b9;
+            border-bottom-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <h1>Отчёт генерации шаблонов</h1>
+        
+        <div class="report-stats">
+            <p>Создано шаблонов: <strong>{{ created }}</strong></p>
+            <p>Пропущено существующих: <strong>{{ skipped }}</strong></p>
+        </div>
+        
+        <p>Шаблоны сохранены в папке:</p>
+        <div class="file-path">
+            <a class="folder-link" onclick="handleFolderClick('{{ templates_dir }}')">{{ templates_dir }}</a>
+        </div>
+        
+        <div class="btn-container">
+            <a href="{% url 'upload_file' %}" class="btn">← К выбору файла!</a>
+        </div>
+    </div>
+
+    <script>
+    function handleFolderClick(path) {
+        // Копируем путь в буфер обмена
+        navigator.clipboard.writeText(path).then(() => {
+            // Пытаемся открыть через protocol handler (работает в некоторых браузерах)
+            try {
+                const formattedPath = 'file://' + path.replace(/\\/g, '/');
+                window.open(formattedPath);
+            } catch (e) {
+                console.error('Не удалось открыть папку:', e);
+            }
+            
+            // Показываем пользователю сообщение
+            showFolderMessage(path);
+        }).catch(err => {
+            console.error('Ошибка копирования:', err);
+            showFolderMessage(path);
+        });
+    }
+
+    function showFolderMessage(path) {
+        alert(`Путь скопирован в буфер обмена:\n${path}\n\nВставьте его в проводник Windows или Total Commander.`);
+    }
+</script>
+</body>
+</html>

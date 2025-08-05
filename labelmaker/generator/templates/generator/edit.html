@@ -1,0 +1,132 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование данных</title>
+    <link rel="icon" href="{% static 'img/barcode.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+    <style>
+        .generation-options {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body class="step-edit-data">
+    <!-- Шапка с информацией о файле и режиме -->
+    <div class="info-header">
+        <div>
+            <strong class="strong">Файл:</strong> 
+            <span class="file-info">{{ file_name }}</span>
+        </div>
+        <div>
+            <strong class="strong">Режим:</strong> 
+            <span class="file-info">
+                {% if is_template_mode %}Создание шаблонов{% else %}Массовая печать{% endif %}
+            </span>
+        </div>
+    </div>
+    
+    <!-- Основной контейнер -->
+    <div class="container data-edit-container">
+        <a href="{% url 'upload_file' %}" class="btn">← К выбору файла!</a>
+        <h1>Шаг 5: Проверка данных</h1>
+        <div class="foto-code"></div>
+        
+        <!-- Форма редактирования -->
+        <form method="post" id="edit-form" action="{% url 'edit_data' %}">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            
+            <!-- Добавляем скрытое поле для режима генерации -->
+            <input type="hidden" name="generation_mode" id="generation_mode_input" 
+                   value="{% if is_template_mode %}template{% else %}bulk{% endif %}">
+            
+            <!-- Таблица с данными -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                        {% for column in selected_columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                        <th>Цвет</th>
+                        {% if column_mapping.size %}
+                            <th>Размер</th>
+                        {% endif %}
+                        <th>Количество</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, item in grouped_list %}
+                        <tr>
+                            {% for column in selected_columns %}
+                                <td>{{ item.data|get_item:column }}</td>
+                            {% endfor %}
+                            <td class="table-input-1">{{ item.form.color }}</td>
+                            {% if column_mapping.size %}
+                                <td class="table-input-2">{{ item.form.size }}</td>
+                            {% endif %}
+                            <td class="table-input-3">{{ item.form.quantity }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Блок выбора режима генерации -->
+            <div class="generation-options">
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="bulk_mode" name="generation_mode_ui" value="bulk" 
+                               {% if not is_template_mode %}checked{% endif %}>
+                        <label for="bulk_mode">Массовая печать</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="template_mode" name="generation_mode_ui" value="template"
+                               {% if is_template_mode %}checked{% endif %}>
+                        <label for="template_mode">Создание шаблонов</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn table-submit-btn">Сгенерировать PDF</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('edit-form');
+        const modeInput = document.getElementById('generation_mode_input');
+        const radioButtons = document.querySelectorAll('input[name="generation_mode_ui"]');
+        
+        // Обновляем скрытое поле при изменении радиокнопок
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                modeInput.value = this.value;
+            });
+        });
+        
+        form.addEventListener('submit', function() {
+            // Убедимся, что выбранный режим сохранен перед отправкой
+            const selectedMode = document.querySelector('input[name="generation_mode_ui"]:checked').value;
+            modeInput.value = selectedMode;
+            return true;
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор колонок</title>
+    <link rel="icon" href="{% static 'img/barcode.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/select_columns.css' %}">
+</head>
+<body class="step-select-columns">
+    <!-- Шапка с информацией о файле и режиме -->
+    <div class="info-header">
+        <div>
+            <strong class="strong">Файл:</strong> 
+            {% if file_name %}
+                <span class="file-info">{{ file_name }}</span>
+            {% else %}
+                <span class="file-info error">Файл не найден!</span>
+            {% endif %}
+        </div>
+        <div>
+            <strong class="strong">Режим:</strong> 
+            <span class="file-info">
+                {% if is_template_mode %}Создание шаблонов{% else %}Массовая печать{% endif %}
+            </span>
+        </div>
+    </div>
+    
+    <!-- Основной контейнер -->
+    <div class="container columns-select-container containeris">
+        <a href="{% url 'upload_file' %}" class="btn">← К выбору файла!</a>
+        <h1>Шаг 3: Выберите колонки</h1>
+        
+        <!-- Форма выбора колонок -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="checkbox-group">
+        <div class="frequent-columns">
+            <h3>Основные поля</h3>
+            {% for field in form %}
+                {% if field.label in "Баркод,Наименование,Артикул,Цвет" %}
+                    <div class="form-check">
+                        {{ field }}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div class="other-columns">
+            <h3>Дополнительные поля</h3>
+            {% for field in form %}
+                {% if field.label not in "Баркод,Наименование,Артикул,Цвет" %}
+                    <div class="form-check">
+                        {{ field }}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+            <button type="submit" class="btn">Продолжить</button>
+        </form>
+
+        <!-- Предпросмотр данных -->
+        <h2>Пример данных:</h2>
+        <div class="table-container">
+            <table class="preview-table">
+                <thead>
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in sample_data %}
+                        <tr>
+                            {% for column in columns %}
+                                <td>{{ row|get_item:column }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

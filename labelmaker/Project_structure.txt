@@ -1,0 +1,108 @@
+labelmaker/
+  ├── build.bat
+  ├── build.log
+  ├── check.py
+  ├── db.sqlite3
+  ├── icon.ico
+  ├── installer.nsi
+  ├── LabelMaker.spec
+  ├── manage.py
+  ├── Project_structure.txt
+  ├── requirements.txt
+  ├── run.py
+  ├── structure_app.py
+  ├── unicon.ico
+  
+:    └── generator/
+:      ├── admin.py
+:      ├── apps.py
+:      ├── forms.py
+:      ├── models.py
+:      ├── tests.py
+:      ├── urls.py
+:      ├── utils.py
+:      ├── views.py
+:      ├── __init__.py
+:      
+:    :    └── migrations/
+:    :      ├── __init__.py
+:    :      
+:    :    :    └── __pycache__/
+:    :    :      ├── __init__.cpython-312.pyc
+:    :    :      ├── __init__.cpython-313.pyc
+:    :    :      
+:    :    └── static/
+:    :    :    └── css/
+:    :    :      ├── base.css
+:    :    :      ├── edit.css
+:    :    :      ├── label_settings.css
+:    :    :      ├── select_columns.css
+:    :    :      ├── select_header.css
+:    :    :      ├── upload.css
+:    :    :      
+:    :    :    └── fonts/
+:    :    :      ├── arialmt.ttf
+:    :    :      
+:    :    :    └── img/
+:    :    :      ├── barcode-on-white.jpg
+:    :    :      ├── barcode.png
+:    :    :      ├── no-description.jpg
+:    :    :      ├── select_header_bg.png
+:    :    :      ├── shtrih-kod-2.jpg
+:    :    :      ├── shtrih-kod-5.jpg
+:    :    :      ├── stiker.png
+:    :    :      ├── zebra_zubra_art.png
+:    :    :      
+:    :    └── templates/
+:    :    :    └── generator/
+:    :    :      ├── edit.html
+:    :    :      ├── label_settings.html
+:    :    :      ├── select_columns.html
+:    :    :      ├── select_header.html
+:    :    :      ├── template_report.html
+:    :    :      ├── upload.html
+:    :    :      
+:    :    └── templatetags/
+:    :      ├── custom_filters.py
+:    :      ├── __init__.py
+:    :      
+:    :    :    └── __pycache__/
+:    :    :      ├── custom_filters.cpython-312.pyc
+:    :    :      ├── custom_filters.cpython-313.pyc
+:    :    :      ├── __init__.cpython-312.pyc
+:    :    :      ├── __init__.cpython-313.pyc
+:    :    :      
+:    :    └── __pycache__/
+:    :      ├── apps.cpython-312.pyc
+:    :      ├── forms.cpython-312.pyc
+:    :      ├── models.cpython-312.pyc
+:    :      ├── urls.cpython-312.pyc
+:    :      ├── utils.cpython-312.pyc
+:    :      ├── views.cpython-312.pyc
+:    :      ├── __init__.cpython-312.pyc
+:    :      
+:    └── hooks/
+:      ├── hook-django.py
+:      
+:    :    └── __pycache__/
+:    :      ├── hook-django.cpython-312.pyc
+:    :      
+:    └── labelmaker/
+:      ├── asgi.py
+:      ├── secretkey.py
+:      ├── settings.py
+:      ├── urls.py
+:      ├── wsgi.py
+:      ├── __init__.py
+:      
+:    :    └── __pycache__/
+:    :      ├── settings.cpython-312.pyc
+:    :      ├── urls.cpython-312.pyc
+:    :      ├── wsgi.cpython-312.pyc
+:    :      ├── __init__.cpython-312.pyc
+:    :      
+:    └── media/
+:      ├── legal_entities.json
+:      
+:    :    └── patterns/
+:    :    └── temp/

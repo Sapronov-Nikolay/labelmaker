@@ -1,0 +1,42 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+patterns/
+temp/
+hooks/
+
+
+# Virtual Environment
+stiker/
+
+# IDE
+.vscode/       # Конфиги VS Code (ещё не созданы, но лучше добавить)
+.idea/         # Конфиги PyCharm (на будущее)
+
+
+
+# Node.js
+node_modules/  # Зависимости npm (если используете)
+
+# Секретные файлы
+secretkey.py   # Ключ Django
+.env           # Переменные окружения
+.DS_Store      # Системные файлы macOS
+
+# Прочее
+*.sql          # Исключить все SQL-файлы, кроме backup.sql
+!backup.sql    # Разрешить только backup.sql
+
+# Установочные файлы.Пока не нужны
+run.py
+check.py
+LabelMaker.spec
+unicon.ico
+icon.ico
+installer.nsi
+build.log
+build.bat

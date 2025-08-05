@@ -1,0 +1,146 @@
+/* ===================== */
+/* СТРАНИЦА ЗАГРУЗКИ (upload.css) */
+/* ===================== */
+
+.general {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  left: 25%;
+  right: 25%;
+  width: 1030px;
+  height: 1310px;
+}
+/* Основной контейнер для формы загрузки */
+.upload-container {
+  position: relative;
+  align-items: center;
+  top: -980px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.foto-code-1 {
+  position: sticky;
+  width: 1200px;
+  height: 1150px;
+  top: -80px;
+  word-wrap: inherit;
+  background: url('../img/stiker.png') no-repeat center center;
+  background-size: cover;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* Группы элементов формы */
+.upload-option {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.upload-option h3 {
+  color: #3498db;
+  margin-top: 0;
+  font-size: 1.3em;
+}
+
+/* Поле для загрузки файла */
+.upload-file-input {
+  display: block;
+  padding: 15px;
+  border: 2px dashed #bdc3c7;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px 0;
+}
+
+.upload-file-input:hover {
+  border-color: #3498db;
+  background: #f8f9fa;
+}
+
+
+.separator:before, .separator:after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+  margin: auto;
+}
+
+/* Подсказки под полями ввода */
+.hint {
+  font-size: 0.9em;
+  color: #7f8c8d;
+  margin-top: 10px;
+}
+
+/* ЮРИКИ * ЮРИКИ * ЮРИКИ * ЮРИКИ * ЮРИКИ * ЮРИКИ * ЮРИКИ * ЮРИКИ */
+
+
+/* СТИЛИ ДЛЯ ПОЛЯ ВЫБОРА ЮРИДИЧЕСКОГО ЛИЦА */
+/* Блок выбора юрлица */
+.legal-entity-section {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #dee2e6;
+}
+
+.entity-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.entity-select {
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.entity-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.entity-input {
+  flex-grow: 1;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  min-width: 200px;
+}
+
+.btn-entity {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-use { background: #28a745; color: white; }
+.btn-save { background: #17a2b8; color: white; }
+.btn-add { background: #ffc107; color: #212529; }
+
+.btn-entity:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}

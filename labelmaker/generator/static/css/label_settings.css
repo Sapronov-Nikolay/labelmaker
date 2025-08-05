@@ -1,0 +1,38 @@
+/* ========================= */
+/* НАСТРОЙКА СООТВЕТСТВИЙ (label_settings.css) */
+/* ========================= */
+
+.label-settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Выпадающие списки */
+.column-select {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 2px solid #bdc3c7;
+  border-radius: 6px;
+  background: white;
+  font-size: 1em;
+}
+
+.column-select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Группы полей формы */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 900;
+  font-size: 18px;
+  font-family: monospace;
+  color: #2c3e50;
+}

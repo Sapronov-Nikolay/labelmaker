@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Настройка соответствий</title>
+    <link rel="icon" href="{% static 'img/barcode.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/label_settings.css' %}">
+</head>
+<body class="step-label-settings">
+    <!-- Шапка с информацией о файле и режиме -->
+    <div class="info-header">
+        <div>
+            <strong class="strong">Файл:</strong> 
+            {% if file_name %}
+                <span class="file-info">{{ file_name }}</span>
+            {% else %}
+                <span class="file-info error">Файл не найден!</span>
+            {% endif %}
+        </div>
+        <div>
+            <strong class="strong">Режим:</strong> 
+            <span class="file-info">
+                {% if is_template_mode %}Создание шаблонов{% else %}Массовая печать{% endif %}
+            </span>
+        </div>
+    </div>
+    
+    <!-- Основной контейнер -->
+    <div class="container label-settings-container">
+        <a href="{% url 'upload_file' %}" class="btn">← К выбору файла!</a>
+        <h1>Шаг 4: Настройка соответствий колонок</h1>
+        
+        <!-- Форма настройки -->
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="{{ form.product_name_column.id_for_label }}" class="input-label">
+                    Колонка для наименования товара:
+                </label>
+                {{ form.product_name_column }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.barcode_column.id_for_label }}" class="input-label">
+                    Колонка для штрихкода/баркода:
+                </label>
+                {{ form.barcode_column }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.article_column.id_for_label }}" class="input-label">
+                    Колонка для артикула:
+                </label>
+                {{ form.article_column }}
+            </div>
+
+            <!-- Добавляем новое поле для выбора колонки с размером -->
+            <div class="form-group">
+                <label for="{{ form.size_column.id_for_label }}" class="input-label">
+                    Колонка для размера (необязательно):
+                </label>
+                {{ form.size_column }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Сохранить и продолжить</button>
+        </form>
+    </div>
+</body>
+</html>
